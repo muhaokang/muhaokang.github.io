@@ -1,15 +1,15 @@
 future: true
 permalink: /:title/
-url: http://muahao.github.io
-name: Ahao Mu
-author: Ahao Mu
-email: ahao.muu@gmail.com
-duoshuo: Ahao Mu
+url: http://muhaokang.github.io
+name: Haokang Mu
+author: Haokang Mu
+email: hkmu9248@gmail.com
+duoshuo: Haokang Mu
 beian: 
 cnzz: 
-weibo: Ahao Mu
-github: Ahao Mu
+weibo: Haokang Mu
+github: muhaokang
 paginate: 20
 highlighter: rouge
 truncate: true
-about: "Ahao Mu"
+about: "Haokang Mu"
