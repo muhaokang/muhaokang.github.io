@@ -6,36 +6,32 @@ comments: no
 
 ---
 ### About me
-A Linux kernel development software engineer. Staff engineer at Alibaba Group. 
-Focus on Linux system and Linux kernel performance, debug, technique skills support. 
+A student JUST
 
 * Education
-    * Undergraduate(09/2011 - 07/2015) Xi`an University of Posts & Telecommunications.
+    * Undergraduate(09/2019 - 07/2023) Dalian Minzu University
 
 * Major fields
-	* Linux kernel development relevant
-	* Linux kernel debug
-	* Linux system adminitration
+	
 
 ---
 ### Experience
-* Time: 07/2015 - Now: Staff engineer at Alibaba Group.
+* Time: 
 
 ---
 ### Presentations
-* 2018.07.26: LC3 topic share:<Advanced Disk Activity Tracing Tool - ioTrace>
+* 
 
 ----
 
 ### Contact：
-Email：ahaomuu@gmail.com
+Email：hkmu9248@gmail.com
 
-Linkedin: [Ahao Mu](https://www.linkedin.com/in/ahao-mu-86072394/)
 
-Github: [https://github.com/muahao](https://github.com/muahao)
+
+Github: [https://github.com/muhaokang](https://github.com/muhaokang)
 
 ----
 
-[![新浪微博](../picture/jiangyi_weibo_picture.png)](https://weibo.com/muahao/home?wvr=5&lf=reg)
 
 ----
