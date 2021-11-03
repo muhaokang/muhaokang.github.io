@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "NameNode和SencondaryNameNode的工作机制"
+title: "NameNode和SecondaryNameNode的工作机制"
 author: Haokang Mu
-excerpt: NameNode和SencondaryNameNode的工作机制.md
+excerpt: NameNode和SecondaryNameNode的工作机制.md
 tags:
 - Hadoop
 - HDFS
