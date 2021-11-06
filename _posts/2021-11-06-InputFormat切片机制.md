@@ -1,4 +1,16 @@
-## 1. FileInputFormat切片机制
+---
+layout: post
+title: "InputFormat切片机制"
+author: Haokang Mu
+excerpt: InputFormat切片机制.md
+tags:
+- Hadoop
+- MapReduce
+
+---
+
+
+## FileInputFormat切片机制
 
 ### 1. FileInputFormat切片源码解析(input.getSplits(job))
 
@@ -51,7 +63,7 @@ file1.txt.split2 --    128 ~ 256
 file1.txt.split3 --    256 ~ 320
 file2.txt.split1 --    0 ~ 10
 
-### 3. FileInputFormat切片大小的参数配置
+### 4. FileInputFormat切片大小的参数配置
 
 （1）源码中计算切片大小的公式
 
@@ -122,6 +134,9 @@ CombineTextInputFormat.setMaxInputSplitSize(job, 4194304);// 4m
 
 ### 3. 切片机制
 生成切片过程包括：虚拟存储过程和切片过程二部分。
+
+![1A71420D975FF4F2251F40A35C5557AB](https://user-images.githubusercontent.com/65494322/140609007-da0dbee8-ddef-4ada-8ede-f1bf717ad42f.png)
+
 
 #### （1）虚拟存储过程：
 
