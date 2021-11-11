@@ -1,4 +1,21 @@
+---
+layout: post
+title: "MapTask&ReduceTask工作机制"
+author: Haokang Mu
+excerpt: MapTask&ReduceTask工作机制.md
+tags:
+- Hadoop
+- MapReduce
+
+---
+
+
+
+
 ## 1 MapTask工作机制
+
+![image](https://user-images.githubusercontent.com/65494322/141268801-4383dcd7-9951-4053-ba5e-6b9700855f5a.png)
+
 
 （1）Read阶段：MapTask通过InputFormat获得的RecordReader，从输入InputSplit中解析出一个个key/value。
 
@@ -27,6 +44,8 @@
   
   ## 2 ReduceTask工作机制
   
+  ![image](https://user-images.githubusercontent.com/65494322/141268863-bc456ad3-4c2e-4e2d-b43f-4cc94b077238.png)
+
   
   （1）Copy阶段：ReduceTask从各个MapTask上远程拷贝一片数据，并针对某一片数据，如果其大小超过一定阈值，则写到磁盘上，否则直接放到内存中。
   
@@ -56,12 +75,26 @@ job.setNumReduceTasks(4);
 （2）实验结论：
 
 表 改变ReduceTask（数据量为1GB）
+![image](https://user-images.githubusercontent.com/65494322/141268911-a48fe732-1353-4e63-9c5b-990e8fd98b17.png)
 
 
 
 #### 3）注意事项
 
-（1）ReduceTask=0，表示没有Reduce阶段，输出文件个数和Map个数一致。（2）ReduceTask默认值就是1，所以输出文件个数为一个。（3）如果数据分布不均匀，就有可能在Reduce阶段产生数据倾斜（4）ReduceTask数量并不是任意设置，还要考虑业务逻辑需求，有些情况下，需要计算全局汇总结果，就只能有1个ReduceTask。（5）具体多少个ReduceTask，需要根据集群性能而定。（6）如果分区数不是1，但是ReduceTask为1，是否执行分区过程。答案是：不执行分区过程。因为在MapTask的源码中，执行分区的前提是先判断ReduceNum个数是否大于1。不大于1肯定不执行。## 4 MapTask & ReduceTask源码解析
+（1）ReduceTask=0，表示没有Reduce阶段，输出文件个数和Map个数一致。
+
+（2）ReduceTask默认值就是1，所以输出文件个数为一个。
+
+（3）如果数据分布不均匀，就有可能在Reduce阶段产生数据倾斜
+
+（4）ReduceTask数量并不是任意设置，还要考虑业务逻辑需求，有些情况下，需要计算全局汇总结果，就只能有1个ReduceTask。
+
+（5）具体多少个ReduceTask，需要根据集群性能而定。
+
+（6）如果分区数不是1，但是ReduceTask为1，是否执行分区过程。答案是：不执行分区过程。因为在MapTask的源码中，执行分区的前提是先判断ReduceNum个数是否大于1。不大于1肯定不执行。
+
+
+## 4 MapTask & ReduceTask源码解析
 
 #### 1）MapTask源码解析流程
 
