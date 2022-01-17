@@ -1,3 +1,15 @@
+---
+layout: post
+title: "ZooKeeper安装部署"
+author: Haokang Mu
+excerpt: ZooKeeper安装部署.md
+tags:
+- Hadoop
+- ZooKeeper
+
+---
+
+
 # 1. 本地模式安装
 ## 1.1 安装前准备
 
