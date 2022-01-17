@@ -1,3 +1,15 @@
+---
+layout: post
+title: "ZooKeeper选举机制"
+author: Haokang Mu
+excerpt: ZooKeeper选举机制.md
+tags:
+- ZooKeeper
+
+---
+
+
+
 # 1. ZooKeeper选举机制---第一次启动
 ![截屏2022-01-10 下午6.50.55.png](https://cdn.nlark.com/yuque/0/2022/png/25452040/1641811881759-0fe5b93a-5064-467c-a2fb-b51901b0cca3.png#clientId=ua00b2caf-4083-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=udf91fc0d&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2022-01-10%20%E4%B8%8B%E5%8D%886.50.55.png&originHeight=611&originWidth=1217&originalType=binary&ratio=1&rotation=0&showTitle=false&size=253601&status=done&style=none&taskId=u795555d5-1656-4c9b-8355-c16ec6158c2&title=)
 
