@@ -1,3 +1,13 @@
+---
+layout: post
+title: "k8s核心技术--Controller"
+author: Haokang Mu
+excerpt: k8s核心技术--Controller.md
+tags:
+- k8s
+
+---
+
 # 1. 什么是Controller
 K8S是容器资源管理和调度平台，容器跑在Pod里，Pod是K8S里最小的单元。所以，这些Pod作为一个个单元我们肯定需要去操作它的状态和生命周期。那么如何操作？这里就需要用到控制器了。
 
