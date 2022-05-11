@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Dockerfile解析"
+author: Haokang Mu
+excerpt: Dockerfile解析.md
+tags:
+- Docker
+
+---
+
 # ![image.png](https://cdn.nlark.com/yuque/0/2022/png/25452040/1644482872925-9045d88d-84c9-4a16-8177-e26d0786b990.png#clientId=uc4b6cf48-48c5-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=530&id=uc55a6721&margin=%5Bobject%20Object%5D&name=image.png&originHeight=530&originWidth=778&originalType=binary&ratio=1&rotation=0&showTitle=false&size=267893&status=done&style=none&taskId=ua061d0c8-91ea-4144-9aff-e335da99ac5&title=&width=778)
 # 1. 是什么？
 Dockerfile是用来构建Docker镜像的文本文件，是由一条条构建镜像所需的指令和参数构成的脚本。
