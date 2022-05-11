@@ -1,3 +1,16 @@
+---
+layout: post
+title: "Hive DDL和DML"
+author: Haokang Mu
+excerpt: Hive DDL和DML.md
+tags:
+- Hadoop
+- Hive
+- SQL
+
+---
+
+
 - 数据操纵语言 DML：包括插入、更新、删除；
 - 数据定义语言 DDL：包括创建数据库中的对象——表、视图、索引等；
 # 1. DDL 数据定义
