@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Elasticsearch JavaAPI操作"
+author: Haokang Mu
+excerpt: Elasticsearch JavaAPI操作.md
+tags:
+- Elasticsearch
+
+---
+
 # 1. 创建Maven项目，添加依赖
 ```xml
 <dependencies>
