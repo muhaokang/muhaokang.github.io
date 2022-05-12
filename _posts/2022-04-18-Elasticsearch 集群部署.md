@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Elasticsearch集群部署"
+author: Haokang Mu
+excerpt: Elasticsearch集群部署.md
+tags:
+- Elasticsearch
+
+---
+
 # 1. 事先提醒
 首先准备安装包，然后重新解压
 万万不可将hadoop102节点上的 elasticsearch-7.8.0/ 分发到其他节点，这样会导致集群中只有hadoop102这一个节点，因为我们本来部署单点模式的时候用了es做了好多次案例，es会存储data
