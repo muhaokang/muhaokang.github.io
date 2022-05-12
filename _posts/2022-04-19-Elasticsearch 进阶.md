@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Elasticsearch进阶"
+author: Haokang Mu
+excerpt: Elasticsearch进阶.md
+tags:
+- Elasticsearch
+
+---
+
 # 
 # 1. 核心概念
 **ES与Mysql对照表**
