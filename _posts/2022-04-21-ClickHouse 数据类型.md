@@ -1,3 +1,13 @@
+---
+layout: post
+title: "ClickHouse数据类型"
+author: Haokang Mu
+excerpt: ClickHouse数据类型.md
+tags:
+- ClickHouse
+
+---
+
 # 1. 整型
 固定长度的整型，包括有符号整型或无符号整型。 
 整型范围（-2^(n-1) ~ 2^(n-1)-1）： 
