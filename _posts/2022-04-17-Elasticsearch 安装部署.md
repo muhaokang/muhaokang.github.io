@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Elasticsearch安装部署"
+author: Haokang Mu
+excerpt: Elasticsearch安装部署.md
+tags:
+- Elasticsearch
+
+---
+
 # 1. 下载软件 
 Elasticsearch 的官方地址：https://www.elastic.co/cn/   
 我选择 7.8.0 版本
