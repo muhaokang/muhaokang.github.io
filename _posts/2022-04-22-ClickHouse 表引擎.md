@@ -1,3 +1,13 @@
+---
+layout: post
+title: "ClickHouse表引擎"
+author: Haokang Mu
+excerpt: ClickHouse表引擎.md
+tags:
+- ClickHouse
+
+---
+
 # 1. 表引擎的使用 
 表引擎是 ClickHouse 的一大特色。可以说， 表引擎决定了如何存储表的数据。包括： 
 
