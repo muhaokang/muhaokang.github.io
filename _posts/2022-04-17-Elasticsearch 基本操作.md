@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Elasticsearch基本操作"
+author: Haokang Mu
+excerpt: Elasticsearch基本操作.md
+tags:
+- Elasticsearch
+
+---
+
 # 1.**RESTful **
 REST 指的是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是 RESTful。Web 应用程序最重要的 REST 原则是，客户端和服务器之间的交互在请求之间是无状态的。从客户端到服务器的每个请求都必须包含理解请求所必需的信息。如果服务器在请求之间的任何时间点重启，客户端不会得到通知。此外，无状态请求可以由任何可用服务器回答，这十分适合云计算之类的环境。客户端可以缓存数据以改进性能。 
 
