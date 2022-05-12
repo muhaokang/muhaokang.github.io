@@ -1,3 +1,13 @@
+---
+layout: post
+title: "ClickHouse副本和分片集群"
+author: Haokang Mu
+excerpt: ClickHouse副本和分片集群.md
+tags:
+- ClickHouse
+
+---
+
 # 1. 副本
 副本的目的主要是保障数据的高可用性，即使一台 ClickHouse 节点宕机，那么也可以从其他服务器获得相同的数据。 
 [https://clickhouse.tech/docs/en/engines/table-engines/mergetree-family/replication/](https://clickhouse.tech/docs/en/engines/table-engines/mergetree-family/replication/)
