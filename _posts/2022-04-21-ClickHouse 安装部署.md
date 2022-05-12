@@ -1,3 +1,13 @@
+---
+layout: post
+title: "ClickHouse安装部署"
+author: Haokang Mu
+excerpt: ClickHouse安装部署.md
+tags:
+- ClickHouse
+
+---
+
 # 1 准备工作 
 ## 1.1 确定防火墙处于关闭状态 
 ## 1.2 CentOS 取消打开文件数限制 
