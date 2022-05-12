@@ -1,3 +1,13 @@
+---
+layout: post
+title: "HBase Shell操作"
+author: Haokang Mu
+excerpt: HBase Shell操作.md
+tags:
+- HBase
+
+---
+
 # 1. 基本操作
 
 **1．进入 HBase 客户端命令行 **
