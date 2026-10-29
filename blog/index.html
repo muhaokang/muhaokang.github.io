@@ -1,0 +1,26 @@
+---
+title: 文章归档
+description: 从一个问题出发，把学到的东西留下来。这里收录了所有技术笔记。
+layout: page
+search: true
+---
+<div class="archive-tools" id="archive-tools" hidden>
+  <label for="post-search">搜索文章</label>
+  <div class="search-box"><input id="post-search" type="search" placeholder="试试 Spark、ClickHouse、监控…" autocomplete="off" aria-controls="archive-list"><span aria-hidden="true">⌕</span></div>
+  <p id="search-status" role="status" aria-live="polite">共 {{ site.posts | size }} 篇文章</p>
+</div>
+<noscript><p class="archive-note">以下是全部文章。也可以通过<a href="{{ '/tags/' | relative_url }}">标签索引</a>查找主题。</p></noscript>
+<div id="archive-list">
+{% assign posts_by_year = site.posts | group_by_exp: 'post', "post.date | date: '%Y'" %}
+{% for year in posts_by_year %}
+  <section class="archive-year" data-year><h2>{{ year.name }}<span>{{ year.items | size }} 篇</span></h2>
+    <ul class="post-list">
+    {% for post in year.items %}
+      {% assign search_tags = post.tags | join: ' ' %}
+      <li class="post-row" data-post data-search="{{ post.title | append: ' ' | append: search_tags | escape }}"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%m.%d' }}</time><a class="post-title" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><span class="post-topic">{{ post.tags | first | escape }}</span><span class="post-arrow" aria-hidden="true">↗</span></li>
+    {% endfor %}
+    </ul>
+  </section>
+{% endfor %}
+</div>
+<p id="search-empty" class="empty-state" hidden>没有找到匹配的文章，试试其他标题关键词或技术标签。</p>

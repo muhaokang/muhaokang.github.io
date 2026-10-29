@@ -1,41 +1,19 @@
 ---
 layout: default
 ---
-<section class="meta">
-<span class="time">
-  <time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y-%m-%d" }}</time>
-</span>
-{% if page.categories.size != 0 %}
- | 
-<span class="categories">
-  分类
-  {% for cat in page.categories %}
-  <a href="/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>&nbsp;
-  {% endfor %}
-</span>
-{% endif %}
-{% if page.tags.size != 0 %}
- | 
-<span class="tags">
-  标签
-  {% for tag in page.tags %}
-  <a href="/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>&nbsp;
-  {% endfor %}
-</span>
-{% endif %}
-</section>
-<section class="post">
+<div class="article-meta">
+  <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y-%m-%d' }}</time>
+  {% for tag in page.tags %}<a class="tag" href="{{ '/tags/' | relative_url }}#{{ tag | uri_escape }}">{{ tag | escape }}</a>{% endfor %}
+</div>
+{% assign post_year = page.date | date: '%Y' | plus: 0 %}
+{% assign current_year = site.time | date: '%Y' | plus: 0 %}
+{% assign age = current_year | minus: post_year %}
+{% if age >= 2 %}<aside class="archive-note">这是一篇历史技术笔记，保留了写作时的内容。软件版本、配置和操作方式请结合当前官方文档核对。</aside>{% endif %}
+<article class="post prose">
 {{ content }}
-</section>
-<section align="right">
-<br/>
-<span>
-	<a {% if page.previous %} href="{{ page.previous.url }}" class="pageNav"{% endif %} {% unless page.previous %} class="pageNavInvalid" {% endunless %} >上一篇</a>
-	&nbsp;&nbsp;&nbsp;
-	<a {% if page.next %} href="{{ page.next.url }}" class="pageNav"{% endif %} {% unless page.next %} class="pageNavInvalid" {% endunless %} >下一篇</a>
-</span>
-</section>
-{% include jiathis.md %}
-{% include comments.md %}
-{% include baidutongji.md %}
-{% include googleanalytics.md %}
+</article>
+<nav class="post-navigation" aria-label="文章翻页">
+  {% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><span>上一篇</span>{{ page.previous.title | escape }}</a>{% else %}<span></span>{% endif %}
+  {% if page.next %}<a href="{{ page.next.url | relative_url }}"><span>下一篇</span>{{ page.next.title | escape }}</a>{% else %}<a href="{{ '/blog/' | relative_url }}"><span>继续阅读</span>全部文章 →</a>{% endif %}
+</nav>
+<p class="article-contact">发现问题或想交流？<a href="{{ '/guestbook/' | relative_url }}">联系我</a>。</p>

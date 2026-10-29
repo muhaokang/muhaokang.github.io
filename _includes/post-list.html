@@ -1,0 +1,5 @@
+<ul class="post-list">
+{% for post in include.posts %}
+  <li class="post-row"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time><a class="post-title" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><span class="post-topic">{{ post.tags | first | escape }}</span><span class="post-arrow" aria-hidden="true">↗</span></li>
+{% endfor %}
+</ul>

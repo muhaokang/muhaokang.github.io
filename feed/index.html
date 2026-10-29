@@ -1,24 +1,26 @@
 ---
+layout: null
+sitemap: false
 ---
-<?xml version="1.0" encoding="utf-8"?>
-  <rss version="2.0"
-        xmlns:content="http://purl.org/rss/1.0/modules/content/"
-        xmlns:atom="http://www.w3.org/2005/Atom"
-  >
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.name }}</title>
-    <link href="{{ site.url }}/feed/" rel="self" />
-    <link href="{{ site.url }}" />
-    <lastBuildDate>{{ site.time | date_to_xmlschema }}</lastBuildDate>
-    <webMaster>{{ site.email }}</webMaster>
-    {% for post in site.posts limit:10 %}
+    <title>{{ site.name | xml_escape }}</title>
+    <link>{{ '/' | absolute_url | xml_escape }}</link>
+    <description>{{ site.description | default: site.name | xml_escape }}</description>
+    <language>zh-CN</language>
+    <atom:link href="{{ '/feed/' | absolute_url | xml_escape }}" rel="self" type="application/rss+xml" />
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <webMaster>{{ site.email | xml_escape }} ({{ site.author | xml_escape }})</webMaster>
+    {% for post in site.posts limit:20 %}
     <item>
       <title>{{ post.title | xml_escape }}</title>
-      <link href="{{ site.url }}{{ post.url }}"/>
-      <pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
-      <author>{{ site.author }}</author>
-      <guid>{{ site.url }}{{ post.id }}</guid>
-      <content:encoded><![CDATA[{{ post.content }}]]></content:encoded>
+      <link>{{ post.url | absolute_url | xml_escape }}</link>
+      <guid isPermaLink="true">{{ post.url | absolute_url | xml_escape }}</guid>
+      <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+      <author>{{ site.email | xml_escape }} ({{ site.author | xml_escape }})</author>
+      <description>{{ post.content | strip_html | normalize_whitespace | truncate: 180 | xml_escape }}</description>
+      <content:encoded>{{ post.content | xml_escape }}</content:encoded>
     </item>
     {% endfor %}
   </channel>
