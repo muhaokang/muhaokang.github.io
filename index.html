@@ -1,56 +1,46 @@
 ---
 title: 首页
-layout: page
+layout: default
+page_class: home
 ---
-
-<ul class="listing">
-{% for post in paginator.posts %}
-  {% capture y %}{{post.date | date:"%Y"}}{% endcapture %}
-  {% if year != y %}
-    {% assign year = y %}
-    <li class="listing-seperator">{{ y }}</li>
-  {% endif %}
-  <li class="listing-item">
-    <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-    <p>	  
-      {{ post.excerpt | remove: '<p>' | remove: '</p>' }} &raquo;
-  	  <a href="{{ post.url }}">read more...</a>
-  	  </p>
-  </li>
-{% endfor %}
-</ul>
-
-<div id="post-pagination" class="paginator">
-
-  {% if paginator.previous_page %}
-    {% if paginator.previous_page == 1 %}
-    <a href="/"><前页</a>
-    {% else %}
-    <a href="/page{{paginator.previous_page}}">&lt;前页</a>
-    {% endif %}
-  {% else %}
-    <span class="previous disabled">&lt;前页</span>
-  {% endif %}
-
-      {% if paginator.page == 1 %}
-      <span class="current-page">1</span>
-      {% else %}
-      <a href="/">1</a>
-      {% endif %}
-
-    {% for count in (2..paginator.total_pages) %}
-      {% if count == paginator.page %}
-      <span class="current-page">{{count}}</span>
-      {% else %}
-      <a href="/page{{count}}">{{count}}</a>
-      {% endif %}
-    {% endfor %}
-
-  {% if paginator.next_page %}
-    <a class="next" href="/page{{paginator.next_page}}">后页&gt;</a>
-  {% else %}
-    <span class="next disabled" >后页&gt;</span>
-  {% endif %}
-  (共{{ paginator.total_posts }}篇)
-</div>
+{% if paginator.page > 1 %}
+<header class="page-heading"><p class="eyebrow">TECH NOTES / 历史归档</p><h1>文章归档<span class="heading-dot">.</span></h1><p class="page-description">第 {{ paginator.page }} 页 · <a href="{{ '/blog/' | relative_url }}">搜索全部文章 →</a></p></header>
+{% assign display_posts = paginator.posts %}
+{% include post-list.html posts=display_posts %}
+<nav class="pagination" aria-label="归档分页">
+  {% if paginator.previous_page == 1 %}<a href="{{ '/blog/' | relative_url }}">← 全部文章</a>{% else %}<a href="{{ paginator.previous_page_path | relative_url }}">← 上一页</a>{% endif %}
+  <span>{{ paginator.page }} / {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}">下一页 →</a>{% endif %}
+</nav>
+{% else %}
+<section class="hero" aria-labelledby="intro-title">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> BIG DATA × LARGE LANGUAGE MODELS</p>
+    <p class="hero-greeting">你好，我是</p>
+    <h1 id="intro-title">Haokang Mu<span class="heading-dot">.</span></h1>
+    <p class="hero-statement">从数据出发，<br>向智能延伸。</p>
+    <p class="hero-description">这里是我的个人网站。记录大数据的学习与实践，<br class="desktop-break">也关注大模型，以及它与数据相遇的可能。</p>
+    <div class="hero-actions"><a class="button button-primary" href="{{ '/blog/' | relative_url }}">阅读技术笔记 <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ '/about/' | relative_url }}">更多关于我 <span aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="field-notebook" aria-label="关注方向：数据、计算、大模型">
+    <div class="notebook-header"><span>FIELD NOTES</span><span>01 / ∞</span></div>
+    <div class="notebook-diagram" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="diagram-core">m<span>.</span></div><span class="diagram-label label-data">DATA</span><span class="diagram-label label-model">MODEL</span><span class="diagram-label label-ideas">IDEAS</span><span class="orbit-point point-one"></span><span class="orbit-point point-two"></span></div>
+    <div class="notebook-footer"><span>数据 · 计算 · 智能</span><span aria-hidden="true">↗</span></div>
+  </div>
+</section>
+<div class="home-index"><span>持续积累的技术笔记</span><a href="{{ '/blog/' | relative_url }}"><strong>{{ site.posts | size }}</strong> 篇文章 <span aria-hidden="true">↗</span></a><a href="{{ '/tags/' | relative_url }}"><strong>{{ site.tags | size }}</strong> 个技术标签 <span aria-hidden="true">↗</span></a><a href="{{ '/feed/' | relative_url }}">RSS 订阅 <span aria-hidden="true">↗</span></a></div>
+<section class="home-section" aria-labelledby="topics-title">
+  <div class="section-heading"><div><p class="eyebrow">EXPLORE / 技术积累</p><h2 id="topics-title">沿着主题阅读<span class="heading-dot">.</span></h2></div><a class="text-link" href="{{ '/categories/' | relative_url }}">全部专题 <span aria-hidden="true">↗</span></a></div>
+  <div class="featured-topics">
+    <a class="featured-topic" href="{{ '/tags/' | relative_url }}#Spark"><span class="topic-number">01 / COMPUTE</span><h3>数据处理与计算</h3><p>从 Hadoop 生态到 Spark，整理分布式计算的概念、原理与使用笔记。</p><div><span>Hadoop · Hive · Spark</span><span aria-hidden="true">↗</span></div></a>
+    <a class="featured-topic" href="{{ '/tags/' | relative_url }}#ClickHouse"><span class="topic-number">02 / STORAGE</span><h3>存储、查询与分析</h3><p>理解数据如何组织、检索与分析，记录数据库和搜索引擎的实践。</p><div><span>ClickHouse · HBase · ES</span><span aria-hidden="true">↗</span></div></a>
+    <a class="featured-topic" href="{{ '/tags/' | relative_url }}#Prometheus"><span class="topic-number">03 / OBSERVABILITY</span><h3>系统与可观测性</h3><p>从容器到监控，理解技术背后的运行环境，把问题看得更清楚。</p><div><span>Docker · Kubernetes · Prometheus</span><span aria-hidden="true">↗</span></div></a>
+  </div>
+</section>
+<section class="home-section recent-section" aria-labelledby="recent-title">
+  <div class="section-heading"><div><p class="eyebrow">WRITING / 文章</p><h2 id="recent-title">最近发布<span class="heading-dot">.</span></h2></div><a class="text-link" href="{{ '/blog/' | relative_url }}">全部 {{ site.posts | size }} 篇 <span aria-hidden="true">↗</span></a></div>
+  {% assign latest_posts = site.posts | slice: 0, 6 %}
+  {% include post-list.html posts=latest_posts %}
+</section>
+<section class="home-about"><p class="eyebrow">NEXT CHAPTER / 继续探索</p><div><h2>新的关注，<br>从大模型开始。</h2><p>技术笔记是过去的积累，也是下一步的起点。<br>现在，我想把更多注意力放在大数据与大模型上。<br><a class="text-link" href="{{ '/about/' | relative_url }}">认识一下 <span aria-hidden="true">→</span></a></p></div></section>
+{% endif %}

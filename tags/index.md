@@ -1,34 +1,28 @@
 ---
 title: 标签
 layout: page
+description: 按技术标签查找历史文章。
 ---
 
-<div id='tag_cloud'>
-{% for tag in site.tags %}
-<a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }}</a>
+<p class="page-intro">按技术标签查找文章。每篇笔记保留原始发布时间。</p>
+
+{% assign sorted_tags = site.tags | sort %}
+<div class="tag-index" aria-label="文章标签">
+{% for tag in sorted_tags %}
+  <a href="#{{ tag[0] | uri_escape }}">{{ tag[0] | escape }} <span>{{ tag[1].size }}</span></a>
 {% endfor %}
 </div>
 
-<ul class="listing">
-{% for tag in site.tags %}
-  <li class="listing-seperator" id="{{ tag[0] }}">{{ tag[0] }}</li>
-{% for post in tag[1] %}
-  <li class="listing-item">
-  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-  </li>
+{% for tag in sorted_tags %}
+<section class="tag-section" id="{{ tag[0] | escape }}">
+  <h2>{{ tag[0] | escape }} <span class="post-count">{{ tag[1].size }} 篇</span></h2>
+  <ul class="listing">
+  {% for post in tag[1] %}
+    <li class="listing-item">
+      <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+      <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+</section>
 {% endfor %}
-{% endfor %}
-</ul>
-
-<script src="/media/js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script> 
-<script language="javascript">
-$.fn.tagcloud.defaults = {
-    size: {start: 1, end: 1, unit: 'em'},
-      color: {start: '#f8e0e6', end: '#ff3333'}
-};
-
-$(function () {
-    $('#tag_cloud a').tagcloud();
-});
-</script>

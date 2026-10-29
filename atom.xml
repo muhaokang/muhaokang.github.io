@@ -1,27 +1,28 @@
-<?xml version="1.0"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
   <title>{{ site.name | xml_escape }}</title>
-  <link href="{{ site.uri }}" />
-  <link type="application/atom+xml" rel="self" href="{{ site.uri }}/atom.xml" />
+  <subtitle>{{ site.description | default: site.name | xml_escape }}</subtitle>
+  <link href="{{ '/' | absolute_url | xml_escape }}" rel="alternate" type="text/html" />
+  <link href="{{ '/atom.xml' | absolute_url | xml_escape }}" rel="self" type="application/atom+xml" />
   <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>{{ site.uri }}</id>
+  <id>{{ '/' | absolute_url | xml_escape }}</id>
   <author>
-    <name>{{ site.author }}</name>
-    <uri>{{ site.uri }}</uri>
+    <name>{{ site.author | xml_escape }}</name>
+    <uri>{{ '/about/' | absolute_url | xml_escape }}</uri>
   </author>
-
-  {% for post in site.posts %}
+  {% for post in site.posts limit:20 %}
   <entry>
-    <id>{{ site.uri }}{{ post.id }}</id>
-    <link type="text/html" rel="alternate" href="{{ site.uri }}{{ post.url }}"/>
-    <title>{{ post.title }}</title>
+    <id>{{ post.url | absolute_url | xml_escape }}</id>
+    <link href="{{ post.url | absolute_url | xml_escape }}" rel="alternate" type="text/html" />
+    <title>{{ post.title | xml_escape }}</title>
     <published>{{ post.date | date_to_xmlschema }}</published>
-    <updated>{{ post.date | date_to_xmlschema }}</updated>
-    <author>
-      <name>{{ site.author }}</name>
-      <uri>{{ site.uri }}</uri>
-    </author>
-    <content type="html">{{ post.content | xml_escape }}</content>
+    <updated>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</updated>
+    <summary>{{ post.content | strip_html | normalize_whitespace | truncate: 180 | xml_escape }}</summary>
+    <content type="html" xml:base="{{ '/' | absolute_url | xml_escape }}">{{ post.content | xml_escape }}</content>
   </entry>
   {% endfor %}
 </feed>

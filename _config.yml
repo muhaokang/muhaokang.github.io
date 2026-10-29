@@ -1,15 +1,31 @@
-future: true
+future: false
 permalink: /:title/
-url: http://muhaokang.github.io
+url: https://muhaokang.github.io
+baseurl: ""
+timezone: Asia/Shanghai
+lang: zh-CN
 name: Haokang Mu
+title: Haokang Mu
+description: "Haokang Mu 的个人网站，记录大数据技术笔记，关注大模型与数据应用。"
 author: Haokang Mu
 email: hkmu9248@gmail.com
-duoshuo: Haokang Mu
-beian: 
-cnzz: 
-weibo: Haokang Mu
 github: muhaokang
+repository: muhaokang/muhaokang.github.io
 paginate: 20
+paginate_path: "/page:num/"
+plugins:
+  - jekyll-paginate
 highlighter: rouge
-truncate: true
-about: "Haokang Mu"
+markdown: kramdown
+kramdown:
+  input: GFM
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - scripts
+  - docs
+  - .bundle
+  - .github
+  - _posts/2022-02-19-实习总结.docx
