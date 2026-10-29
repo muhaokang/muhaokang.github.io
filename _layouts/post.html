@@ -3,9 +3,11 @@ layout: default
 ---
 <div class="article-meta">
   <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y-%m-%d' }}</time>
+  {% if page.last_modified_at %}<span>更新于 <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: '%Y-%m-%d' }}</time></span>{% endif %}
   {% for tag in page.tags %}<a class="tag" href="{{ '/tags/' | relative_url }}#{{ tag | uri_escape }}">{{ tag | escape }}</a>{% endfor %}
 </div>
-{% assign post_year = page.date | date: '%Y' | plus: 0 %}
+{% assign reviewed_date = page.last_modified_at | default: page.date %}
+{% assign post_year = reviewed_date | date: '%Y' | plus: 0 %}
 {% assign current_year = site.time | date: '%Y' | plus: 0 %}
 {% assign age = current_year | minus: post_year %}
 {% if age >= 2 %}<aside class="archive-note">这是一篇历史技术笔记，保留了写作时的内容。软件版本、配置和操作方式请结合当前官方文档核对。</aside>{% endif %}

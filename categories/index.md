@@ -1,12 +1,12 @@
 ---
 title: 技术专题
 layout: page
-description: 按技术主题浏览数据处理、存储检索和云原生学习笔记。
+description: 按技术主题浏览数据建模、质量排查、数据处理与存储检索笔记。
 ---
 
 <p class="page-intro">从一个技术主题开始，沿着标签阅读相关笔记。</p>
 
-{% assign topics = "数据处理与分析|Hadoop,HDFS,MapReduce,Shuffle,YARN,Yarn,Hive,Spark,SQL|从分布式计算基础，到数据处理与查询。;存储、检索与消息|HBase,ClickHouse,Elasticsearch,Redis,Kafka,ZooKeeper|记录不同存储系统、检索引擎和消息组件的使用。;容器与可观测性|Docker,k8s,Prometheus,HA,systemd|整理部署、容器编排、监控与高可用实践。;工程与成长|实习|保留学习阶段的实践记录与思考。" | split: ";" %}
+{% assign topics = "数据工程与实践|数据建模,数据质量,数据工程,实习|从计算口径、状态建模，到链路质量与实践复盘。;数据处理与分析|Hadoop,HDFS,MapReduce,Shuffle,YARN,Yarn,Hive,Spark,SQL|从分布式计算基础，到数据处理与查询。;存储、检索与消息|HBase,ClickHouse,Elasticsearch,Redis,Kafka,ZooKeeper|记录不同存储系统、检索引擎和消息组件的使用。;容器与可观测性|Docker,k8s,Prometheus,HA,systemd|整理部署、容器编排、监控与高可用实践。" | split: ";" %}
 <div class="topic-grid">
 {% for topic in topics %}
   {% assign fields = topic | split: "|" %}
